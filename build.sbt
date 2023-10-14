@@ -9,10 +9,33 @@ ThisBuild / organizationName := "example"
 resourceDirectory in Compile := baseDirectory.value / "src/main/resources"
 resourceDirectory in Test := baseDirectory.value / "src/test/resources"
 
-lazy val spark_learn = (
-  Project("spark-learn", file("spark-learn"))
+lazy val learn_kafka = (
+  Project("learn-kafka", file("learn-kafka"))
+    .settings(
+      name := "learn_kafka",
+      libraryDependencies ++= Seq(
+        "org.apache.kafka" %% "kafka" % "2.4.1",
+        "org.apache.kafka" % "kafka-clients" % "2.4.1"
+      )
+    )
+  )
+lazy val learn_spark = (
+  Project("learn-spark", file("learn-spark"))
+    .settings(
+      name := "learn_spark",
+      libraryDependencies ++= Seq(
+        "org.apache.spark" %% "spark-core" % "2.4.8",
+        "org.apache.spark" %% "spark-sql" % "2.4.8",
+        "org.apache.spark" %% "spark-hive" % "2.4.8",
+        "com.typesafe" % "config" % "1.4.2"
+      )
+    )
+  )
+
+lazy val learn_spark_streaming = (
+  Project("learn-spark_streaming", file("learn-spark-streaming"))
   .settings(
-    name := "spark_learn",
+    name := "learn_spark_streaming",
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % "2.4.8",
       "org.apache.spark" %% "spark-sql" % "2.4.8",
@@ -24,19 +47,9 @@ lazy val spark_learn = (
   )
 )
 
-lazy val kafka_learn = (
-  Project("kafka-learn", file("kafka-learn"))
-    .settings(
-      name := "kafka_learn",
-      libraryDependencies ++= Seq(
-        "org.apache.kafka" %% "kafka" % "2.4.1",
-        "org.apache.kafka" % "kafka-clients" % "2.4.1"
-      )
-    )
-  )
-
 lazy val root = (project in file("."))
   .aggregate(
-    spark_learn,
-    kafka_learn
-  )
+    learn_kafka,
+    learn_spark,
+    learn_spark_streaming
+  ).settings(name := "scala")
