@@ -5,4 +5,6 @@ import com.example.uitl.SparkEntrypoint
 object EventTimeWindows extends App{
   val spark = SparkEntrypoint.buildSpark("eventtime")
 
+//  spark.readStream()
+
 }

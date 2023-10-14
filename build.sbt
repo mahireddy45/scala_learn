@@ -44,8 +44,18 @@ lazy val learn_spark_streaming = (
       "org.apache.spark" %% "spark-sql-kafka-0-10" % "2.4.8",
       "com.typesafe" % "config" % "1.4.2"
     )
-  )
+  ).dependsOn(learn_logging)
 )
+lazy val learn_logging = (
+  project in file("learn-logging"))
+  .settings(
+    name := "learn_logging",
+      libraryDependencies ++= Seq(
+      "org.slf4j" % "slf4j-api" % "1.7.32",
+      "ch.qos.logback" % "logback-classic" % "1.2.6"
+    ),
+    // Optionally, add any specific settings for your logging module
+  )
 
 lazy val root = (project in file("."))
   .aggregate(
@@ -53,3 +63,4 @@ lazy val root = (project in file("."))
     learn_spark,
     learn_spark_streaming
   ).settings(name := "scala")
+//  .dependsOn(learn_logging)

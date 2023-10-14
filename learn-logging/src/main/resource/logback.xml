@@ -1,0 +1,28 @@
+<configuration>
+    <!-- Define the root logger with a level and appender -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+    <!-- Define an appender named STDOUT -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- Encoder pattern specifies the log format -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define a logger named com.example with a specific level -->
+    <logger name="com.example" level="DEBUG">
+        <!-- Specify an appender for this logger -->
+        <appender-ref ref="FILE" />
+    </logger>
+
+    <!-- Define an appender named FILE -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>myapp.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+</configuration>

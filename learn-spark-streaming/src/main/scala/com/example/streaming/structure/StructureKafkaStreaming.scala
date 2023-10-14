@@ -2,7 +2,7 @@ package com.example.streaming.structure
 
 import org.apache.spark.sql.SparkSession
 
-object KafkaStreaming extends App {
+object StructureKafkaStreaming extends App {
 
   val spark = SparkSession.builder().master("local[3]").appName("Kafka stream").getOrCreate()
 
