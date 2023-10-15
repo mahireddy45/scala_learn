@@ -27,7 +27,8 @@ lazy val learn_spark = (
         "org.apache.spark" %% "spark-core" % "2.4.8",
         "org.apache.spark" %% "spark-sql" % "2.4.8",
         "org.apache.spark" %% "spark-hive" % "2.4.8",
-        "com.typesafe" % "config" % "1.4.2"
+        "com.typesafe" % "config" % "1.4.2",
+        "mysql" % "mysql-connector-java" % "8.0.28"
       )
     )
   )
