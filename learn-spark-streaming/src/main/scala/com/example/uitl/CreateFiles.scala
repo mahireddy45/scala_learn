@@ -10,7 +10,8 @@ object CreateFiles extends App with CommonLogger{
   logger.info("Creating files for testing....")
 //  private val input: Config = ConfManager.getConfig("com.example.stream.in.dstream")
 //  val filePath = input.getString("file_path")
-  val filePath = "C:\\Users\\mahir\\projects\\scala_learn\\learn-spark-streaming\\src\\main\\resource"
+//  val filePath = "C:\\Users\\mahir\\projects\\scala_learn\\learn-spark-streaming\\src\\main\\resource"
+  val filePath = "C:\\Users\\mahir\\projects\\scala_learn\\testdata"
 
   new Thread(() => {
     while(true){
