@@ -11,11 +11,12 @@ object CreateFiles extends App with CommonLogger{
 //  private val input: Config = ConfManager.getConfig("com.example.stream.in.dstream")
 //  val filePath = input.getString("file_path")
 //  val filePath = "C:\\Users\\mahir\\projects\\scala_learn\\learn-spark-streaming\\src\\main\\resource"
-  val filePath = "C:\\Users\\mahir\\projects\\scala_learn\\testdata"
+  val filePath = "testdata"
 
   new Thread(() => {
     while(true){
       val newFile = new File(s"$filePath/employee${System.currentTimeMillis()}.csv")
+      logger.info(s"File : $newFile created")
       val writer = new FileWriter(newFile)
       writer.write(s"""Veena,${Random.nextInt()},Hyd
            |Mahi,${Random.nextInt()},Hyd

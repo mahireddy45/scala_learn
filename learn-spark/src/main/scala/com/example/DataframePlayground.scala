@@ -21,9 +21,15 @@ object DataframePlayground extends App{
   val collectionToDF = data.toDF
   collectionToDF.show(false)
 
-  val schema = StructType(Array(StructField("Language", StringType, true), StructField("Users", StringType, true)))
-  val rowRDD = rdd.map(f => Row(f._1, f._2))
-  val rowRDDToDF = spark.createDataFrame(rowRDD, schema)
-  rowRDDToDF.show(false)
+//  val schema = StructType(Array(StructField("Language", StringType, true), StructField("Users", StringType, true)))
+//  val rowRDD = rdd.map(f => Row(f._1, f._2))
+//  val rowRDDToDF = spark.createDataFrame(rowRDD, schema)
+//  rowRDDToDF.show(false)
+
+  val jsonDF =
+    spark.read.json("testdata/sample.json").cache()
+  jsonDF.filter($"_corrupt_record".isNotNull).count()
+
+
 
 }
